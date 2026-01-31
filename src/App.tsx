@@ -5,14 +5,19 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import HeartCursor from "@/components/HeartCursor";
+import CustomCursor from "@/components/CustomCursor";
 
 const queryClient = new QueryClient();
+
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CustomCursor />
+      <HeartCursor />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

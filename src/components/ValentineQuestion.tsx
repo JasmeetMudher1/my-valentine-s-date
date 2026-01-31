@@ -32,28 +32,33 @@ const ValentineQuestion = ({ onYes }: ValentineQuestionProps) => {
     return () => animation.stop();
   }, [yesScale]);
 
-  const runAwayNo = useCallback(() => {
-    if (noAttempts >= 3) {
-      setIsNoTransformed(true);
-      return;
-    }
+  const noMessages = [
+    'No',
+    'Please? 🥺',
+    'I love you! 💖',
+    'You can do this! 💪',
+    'Pretty please? 😘',
+    'Are you sure? 😳',
+    'Don’t break my heart! 💔',
+    'You’re my favorite! 🌹',
+    'Say yes, it’s fate! ✨',
+    'You make me smile! 😊',
+    'Let’s make memories! 📸',
+    'You’re the best! 🏆',
+    'I’ll bring chocolate! 🍫',
+    'I’ll be so happy! 🥰',
+    'You light up my world! 🌟',
+    'Forever us? 💑',
+    'You’re my everything! 💞',
+    'Please, please, please! 🙏',
+    'I can’t do this without you! 😢',
+    'Say yes for me! 💌',
+  ];
 
-    if (!containerRef.current) return;
-
-    const container = containerRef.current.getBoundingClientRect();
-    const buttonWidth = 120;
-    const buttonHeight = 50;
-    const padding = 20;
-
-    const maxX = container.width - buttonWidth - padding * 2;
-    const maxY = container.height - buttonHeight - padding * 2;
-
-    const newX = padding + Math.random() * maxX;
-    const newY = padding + Math.random() * maxY;
-
-    setNoPosition({ x: newX - container.width / 2 + buttonWidth / 2, y: newY });
+  const runAwayNo = useCallback((e?: React.MouseEvent | React.TouchEvent) => {
+    if (e) e.preventDefault();
     setNoAttempts((prev) => prev + 1);
-  }, [noAttempts]);
+  }, []);
 
   const handleNoMouseEnter = () => {
     runAwayNo();
@@ -116,7 +121,12 @@ const ValentineQuestion = ({ onYes }: ValentineQuestionProps) => {
         <span className="ml-2">💝</span>
       </motion.h3>
 
-      <div className="flex flex-col sm:flex-row items-center gap-6 relative min-h-[200px] w-full max-w-md justify-center">
+      <div className="w-full flex justify-center">
+        <div
+          ref={containerRef}
+          className="relative flex flex-col sm:flex-row items-center gap-8 min-h-[300px] w-full max-w-xl justify-center border-2 border-dashed border-valentine-pink/30 rounded-2xl bg-white/10"
+          style={{overflow: 'hidden'}}
+        >
         {/* YES Button */}
         <motion.button
           onClick={onYes}
@@ -134,22 +144,17 @@ const ValentineQuestion = ({ onYes }: ValentineQuestionProps) => {
         {!isNoTransformed ? (
           <motion.button
             ref={noButtonRef}
-            className="px-8 py-4 rounded-full font-display text-xl bg-muted text-muted-foreground transition-all duration-200"
+            className="px-8 py-4 rounded-full font-display text-xl bg-muted text-muted-foreground transition-all duration-200 select-none"
             style={{
-              position: noAttempts > 0 ? 'absolute' : 'relative',
+              position: 'relative',
+              cursor: 'pointer',
             }}
-            animate={{
-              x: noPosition.x,
-              y: noPosition.y,
-            }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            onMouseEnter={handleNoMouseEnter}
-            onTouchStart={handleNoTouchStart}
+            whileHover={{ scale: 1.08, rotate: [0, 5, -5, 0] }}
+            whileTap={{ scale: 0.95 }}
+            onClick={runAwayNo}
+            onTouchStart={runAwayNo}
           >
-            {noAttempts === 0 && 'No'}
-            {noAttempts === 1 && 'Are you sure?'}
-            {noAttempts === 2 && 'Really?!'}
-            {noAttempts >= 3 && '😢'}
+            {noMessages[noAttempts % noMessages.length]}
           </motion.button>
         ) : (
           <motion.button
@@ -165,15 +170,16 @@ const ValentineQuestion = ({ onYes }: ValentineQuestionProps) => {
             Okay, Yes! 💕
           </motion.button>
         )}
+        </div>
       </div>
 
-      {noAttempts > 0 && noAttempts < 3 && (
+      {noAttempts > 0 && noAttempts < 5 && (
         <motion.p
-          className="mt-8 text-sm text-muted-foreground font-body"
+          className="mt-8 text-base text-valentine-pink font-body animate-bounce"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          Hehe, you can't click No! 😏
+          The No button is too quick for you! 💨
         </motion.p>
       )}
 

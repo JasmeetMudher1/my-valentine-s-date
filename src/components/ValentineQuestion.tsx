@@ -77,7 +77,7 @@ const ValentineQuestion = ({ onYes }: ValentineQuestionProps) => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
     >
-      {/* Decorative Hearts */}
+      {/* Decorative Hearts & Emojis */}
       <motion.div
         className="absolute top-10 left-10 text-6xl text-valentine-pink/30"
         animate={{ rotate: [0, 10, -10, 0], y: [0, -10, 0] }}
@@ -91,6 +91,34 @@ const ValentineQuestion = ({ onYes }: ValentineQuestionProps) => {
         transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
       >
         ✦
+      </motion.div>
+      <motion.div
+        className="absolute top-24 right-16 text-5xl text-valentine-pink/40"
+        animate={{ y: [0, 20, 0], scale: [1, 1.2, 1] }}
+        transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+      >
+        💖
+      </motion.div>
+      <motion.div
+        className="absolute bottom-32 left-16 text-4xl text-valentine-gold/30"
+        animate={{ y: [0, -15, 0], scale: [1, 1.1, 1] }}
+        transition={{ duration: 4, repeat: Infinity, delay: 2 }}
+      >
+        💘
+      </motion.div>
+      <motion.div
+        className="absolute top-1/2 left-1/4 text-5xl text-valentine-pink/20"
+        animate={{ x: [0, 10, -10, 0], rotate: [0, 10, -10, 0] }}
+        transition={{ duration: 6, repeat: Infinity, delay: 1.5 }}
+      >
+        💝
+      </motion.div>
+      <motion.div
+        className="absolute bottom-10 left-1/2 text-4xl text-valentine-gold/20"
+        animate={{ y: [0, 10, 0], scale: [1, 1.15, 1] }}
+        transition={{ duration: 5, repeat: Infinity, delay: 2.5 }}
+      >
+        🌹
       </motion.div>
 
       <motion.h2
@@ -144,7 +172,7 @@ const ValentineQuestion = ({ onYes }: ValentineQuestionProps) => {
         {!isNoTransformed ? (
           <motion.button
             ref={noButtonRef}
-            className="px-8 py-4 rounded-full font-display text-xl bg-muted text-muted-foreground transition-all duration-200 select-none"
+            className="px-8 py-4 rounded-full font-display text-xl bg-white text-valentine-deep-pink border-2 border-valentine-pink shadow-lg font-bold transition-all duration-200 select-none"
             style={{
               position: 'relative',
               cursor: 'pointer',

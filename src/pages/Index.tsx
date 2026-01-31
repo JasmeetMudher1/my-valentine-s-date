@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FloatingHearts from '@/components/FloatingHearts';
+import RomanticEmojisBG from '@/components/RomanticEmojisBG';
 import Envelope from '@/components/Envelope';
 import BentoJourney from '@/components/BentoJourney';
 import ValentineQuestion from '@/components/ValentineQuestion';
@@ -20,9 +21,15 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden">
+    <div
+      className="min-h-screen relative overflow-x-hidden"
+      style={{
+        background: "linear-gradient(135deg, #FFF0F6 0%, #FFD6E0 50%, #FFE3EC 100%)"
+      }}
+    >
       {/* Floating Background */}
       <FloatingHearts />
+      <RomanticEmojisBG />
 
       {/* Music Toggle */}
       <MusicToggle />

@@ -5,14 +5,14 @@ import { Heart, Star, Camera, Lock, Unlock, ChevronLeft, ChevronRight } from 'lu
 const memories = [];
 
 const photos = [
-  '/photos/IMG-20240707-WA0015.jpg',
-  '/photos/IMG-20240803-WA0023.jpg',
-  '/photos/IMG-20240803-WA0028.jpg',
-  '/photos/IMG-20240824-WA0010~3.jpg',
-  '/photos/IMG-20240824-WA0018.jpg',
-  '/photos/Screenshot_20241114_212827_Gallery.jpg',
-  '/photos/Screenshot_20241114_213007_Gallery.jpg',
-  '/photos/Snapchat-1938613865~2.jpg',
+  '/my-valentine-s-date/photos/IMG-20240707-WA0015.jpg',
+  '/my-valentine-s-date/photos/IMG-20240803-WA0023.jpg',
+  '/my-valentine-s-date/photos/IMG-20240803-WA0028.jpg',
+  '/my-valentine-s-date/photos/IMG-20240824-WA0010~3.jpg',
+  '/my-valentine-s-date/photos/IMG-20240824-WA0018.jpg',
+  '/my-valentine-s-date/photos/Screenshot_20241114_212827_Gallery.jpg',
+  '/my-valentine-s-date/photos/Screenshot_20241114_213007_Gallery.jpg',
+  '/my-valentine-s-date/photos/Snapchat-1938613865~2.jpg',
 ];
 
 const BentoJourney = () => {
